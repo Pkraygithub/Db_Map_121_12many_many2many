@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style class="styl"></style>
+	<title>Edit Details</title>
+
+</head>
+
+
+<body background="">
+
+<div th:replace="navbar" class="container"></div>
+
+	<!--<nav class="navbar navbar-expand-lg navbar-light bg-success"> Start Nav Bar
+
+		<a class="navbar-brand" href="#">Home</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" th:href="@{http://localhost:5487/cctns/reg}" target="">Home</a>
+				</li>
+				<li class="nav-item">
+				<li class="nav-item active">
+					<a class="nav-link" th:href="@{http://localhost:5487/cctns/showallrecords}" target="">Emp
+						Records</a>
+				</li>
+				</li>
+				<li class="nav-item">
+				<li class="nav-item active">
+					<a class="nav-link" href="" target="">Roster Sheet</a>
+				</li>
+				</li>
+
+
+				<li class="nav-item">
+				<li class="nav-item active">
+					<a class="nav-link" href="http://localhost:5487/cctns/rostersheet" target="">Leave</a>
+				</li>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Dropdown link
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#">Action</a>
+						<a class="dropdown-item" href="#">Another action</a>
+						<a class="dropdown-item" href="#">Something else here</a>
+					</div>
+				</li>
+
+
+			</ul>
+		</div>
+	</nav> End Nav Bar-->
+	
+	<!--start body-->
+	<div class="card" style="background-color: antiquewhite;">
+		<div class="card-body">
+
+			<center>
+				<form th:action="@{/cctns/update}" method="post" th:Object="${eupdate}">
+
+					<div class="col-3">
+						<label for="inputName">Employees Id</label>
+						<input type="text" class="form-control" th:field="*{eId}" value="" size=""
+							placeholder="Update Name" readonly="true"><br>
+					</div>
+
+					<div class="col-3">
+						<label for="inputName">Name</label>
+						<input type="text" class="form-control" th:field="*{eName}" value="" size=""
+							placeholder="Update Name"><br>
+					</div>
+
+					<div class="col-3">
+						<label for="inputName">Constable_Id</label>
+						<input type="text" th:field="*{constable_Id}" class="form-control" size=""
+							placeholder="Update Id"><br>
+					</div>
+					<div class="col-3">
+						<label for="inputName">Designation</label>
+						<input type="text" class="form-control" th:field="*{edesignation}" value="" size=""
+							placeholder="Designation"><br><br>
+					</div>
+					<input type="submit" value="Submit" class="btn-btn-success">
+				</form>
+			</center>
+
+		</div>
+
+	</div><!--End body-->
+
+	<!--footer start-->
+	<div th:if="${updatemessage!=null}">
+
+		<div class="class" style="background-color: aquamarine; color: blue;text-align:center;">
+
+			<!--<h1>This is Footer Part</h1>-->
+			<b><span th:text="${updatemessage}"></span></b>
+
+
+		</div>
+	</div>
+	<!--End start-->
+
+</body>
+
+</html>

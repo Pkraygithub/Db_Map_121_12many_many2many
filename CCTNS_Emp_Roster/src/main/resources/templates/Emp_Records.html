@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style class="styl"></style>
+	<title>Emp allrecords</title>
+</head>
+
+<body class="" style="background-color: antiquewhite;">
+
+	<div th:replace="navbar" class="container"></div>
+
+
+	<!--	<nav class="navbar navbar-expand-lg navbar-light bg-success"> Start Nav Bar
+
+		<a class="navbar-brand" href="#">Home</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" th:href="@{http://localhost:5487/cctns/reg}" target="">Home</a>
+				</li>
+				<li class="nav-item">
+				<li class="nav-item active">
+					<a class="nav-link" th:href="@{http://localhost:5487/cctns/showallrecords}" target="">Emp
+						Records</a>
+				</li>
+				</li>
+				<li class="nav-item">
+				<li class="nav-item active">
+					<a class="nav-link" href="http://localhost:5487/cctns/rostersheet" target="">Roster Sheet</a>
+				</li>
+				</li>
+				<li class="nav-item">
+				<li class="nav-item active">
+					<a class="nav-link" href="http://localhost:5487/cctns/leavedetails" target="">Leave</a>
+				</li>
+				</li>
+
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Dropdown link
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#">Action</a>
+						<a class="dropdown-item" href="#">Another action</a>
+						<a class="dropdown-item" href="#">Something else here</a>
+					</div>
+				</li>
+
+
+			</ul>
+		</div>
+	</nav>  End Nav Bar-->
+
+
+	<div class="card" style="background-color: antiquewhite;">
+		<h1 class="text-center" style="color: blue;"><u> EMPLOYES RECORDS</u></h1>
+		<marquee>
+			<h5 style="color: brown;">Employees Records are come from Database</h5>
+		</marquee>
+		<div class="card-body">
+
+
+			<center>
+
+				<table class="table-hover" style="background-color: beige;" border="1">
+					<tr style="background-color:blue;color: aliceblue; text-align: center;">
+						<th>Employees Id</th>
+						<th>Employees Name</th>
+						<th>Constable Id</th>
+						<th>Designation</th>
+						<th colspan="2">Operation</th>
+
+					</tr>
+					<tr th:each="recods:${page}" style=" text-align: center;">
+						<td th:text="${recods.eId}"></td>
+						<td th:text="${recods.eName}"></td>
+						<td th:text="${recods.constable_Id}"></td>
+						<td th:text="${recods.edesignation}"></td>
+						<td>
+							<a th:href="@{/cctns/editrecords/{id}(id=${recods.eId})}" class="btn btn btn-sm"><span
+									style='font-size:20px;'>&#9997;Edit</span></a>||
+							<a th:href="@{/cctns/deleteEmprecords/{id}(id=${recods.eId})}" class="btn btn btn-sm"><span
+									style='font-size:20px;'>&#10060;Delete</span></a>
+
+							<!--11Tushar code below-->
+						<a th:href="@{http://localhost:5487/cctns/leave}" class="btn btn-danger btn-sm"><span
+									style='font-size:15px;'>&#9997;Apply Leave</span></a>
+						<a th:href="@{http://localhost:5487/cctns/showallleave}"
+								class="btn btn-primary btn-sm"><span style='font-size:15px;'>&#9997;View</span></a>
+						<!--till here tushar-->
+
+
+
+						</td>
+					</tr>
+				</table>
+				<hr>
+
+				<!--	<span th:if="${!page.isFirst()}">
+					<a th:href="@{/cctns/showallrecords(page=0)}">First</a>
+				</span>
+
+				<span th:if="${page. hasPrevious()}">
+					<a href="@{/cctns/showallrecords(page=${page.number-1})}">Previous</a>
+				</span>
+--> <span>Page No ~</span>
+				<th:block th:each="i:${#numbers.sequence(0,page.totalPages-1)}">
+					<a th:href="@{/cctns/showallrecords(page=${i})}">[[${i}+1]]</a>
+				</th:block>
+
+				<!--<span th:if="${page.hasNext()}">
+					<a href="@{/cctns/showallrecords(page=${page.number+1})}">Next</a>
+				</span>
+
+				<span th:if="${!page.isLast()}">
+					<a href="@{/cctns/showallrecords(page=${page.totalPages-1})}">Last</a>
+				</span>-->
+			</center>
+
+		</div>
+	</div>
+
+
+	<!--footer start-->
+	<div th:if="${deleteMessage!=null}">
+
+		<div class="class" style="background-color: aquamarine; color: blue;text-align:center;">
+
+			<!--<h1>This is Footer Part</h1>-->
+			<b><span th:text="${deleteMessage}"></span></b>
+
+
+		</div>
+	</div>
+
+
+
+
+
+</body>
+
+</html>

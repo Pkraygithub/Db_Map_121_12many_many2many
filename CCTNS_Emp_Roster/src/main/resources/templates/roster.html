@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<title>Roster Sheet</title>
+</head>
+
+<body style="background-color: antiquewhite;">
+
+<div th:replace="navbar" class="container"></div>
+<!--
+	<nav class="navbar navbar-expand-lg navbar-light bg-success"> Start Nav Bar
+
+		<a class="navbar-brand" href="#">Home</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" th:href="@{http://localhost:5487/cctns/reg}" target="">Home</a>
+				</li>
+				<li class="nav-item">
+				<li class="nav-item active">
+					<a class="nav-link" th:href="@{http://localhost:5487/cctns/showallrecords}" target="">Emp
+						Records</a>
+				</li>
+				</li>
+				<li class="nav-item">
+				<li class="nav-item active">
+					<a class="nav-link" href="http://localhost:5487/cctns/rostersheet" target="">Roster Sheet</a>
+				</li>
+				</li>
+				<li class="nav-item">
+				<li class="nav-item active">
+					<a class="nav-link" href="http://localhost:5487/cctns/leavedetails" target="">Leave</a>
+				</li>
+				</li>
+
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+						data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Dropdown link
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#">Action</a>
+						<a class="dropdown-item" href="#">Another action</a>
+						<a class="dropdown-item" href="#">Something else here</a>
+					</div>
+				</li>
+
+
+			</ul>
+		</div>
+	</nav> End Nav Bar-->
+
+	<div class="container" style="background-color:green">
+
+		<div class="hadder my-0">
+			<u>
+				<h1 class="text-center" style="color: yellow;background-color: green; border-radius:35q"><img
+						src="/img/Goa_PoliceImg.png" alt="" class="rounded-pill" style="width:6%; height:5%">GOA POLICE
+					CCTNS EMP ROSTER</h1>
+			</u>
+		</div>
+
+
+		<div class="card" style="background-color:azure">
+			<div class="card-body">
+				<center>
+					<form action="@{cctns/rostersheetSave}" th:object="${rosterMessage}">
+						<table class="table table-striped table-hover" border="1">
+							<thead>
+								<tr class="text-center" style="color: aliceblue; background-color: blue;">
+									<th scope="col">Employees Name</th>
+									<th scope="col">SHIFT</th>
+									<th scope="col">MON</th>
+									<th scope="col">TUS</th>
+									<th scope="col">WED</th>
+									<th scope="col">THRU</th>
+									<th scope="col">FRI</th>
+									<th scope="col">SAT</th>
+									<th scope="col">SUN</th>
+
+								</tr>
+							</thead>
+							<tbody class="text-center">
+								<td class="" style="width: 1q;height:1q;"  >
+									
+											<select>
+													<option th:each="roster:${RosterEmpList}" 
+													th:text="${roster.eName}"
+													th:value="${roster.eId}" ></option>
+											</select>
+
+									</td>
+
+									<td rowspan="2" class="text-center"
+										style="color: aqua;background-color: blueviolet;padding: 2.2%;">
+
+										<b>MORNING SHIFT</b>
+									</td>
+									<td>9:00 AM to 7:00 PM</td>
+									<td>9:00 AM to 7:00 PM</td>
+									<td>9:00 AM to 7:00 PM</td>
+									<td>9:00 AM to 7:00 PM</td>
+									<td>9:00 AM to 7:00 PM</td>
+									<td>9:00 AM to 7:00 PM</td>
+									<td>9:00 AM to 7:00 PM</td>
+
+								</td>
+								</label>
+								<tr>
+								<td class="" style="width: 1q;height:1q;"  >
+									
+											<select>
+													<option th:each="roster:${RosterEmpList}" 
+													th:text="${roster.eName}"
+													th:value="${roster.eId}" ></option>
+											</select>
+
+									</td>
+
+									<td>9:00 AM to 7:00 PM</td>
+									<td>9:00 AM to 7:00 PM</td>
+									<td>9:00 AM to 7:00 PM</td>
+									<td>9:00 AM to 7:00 PM</td>
+									<td>9:00 AM to 7:00 PM</td>
+									<td>9:00 AM to 7:00 PM</td>
+									<td>9:00 AM to 7:00 PM</td>
+								</tr>
+								<tr>
+									<td class="" style="width: 1q;height:1q;"  >
+									
+											<select>
+													<option th:each="roster:${RosterEmpList}" 
+													th:text="${roster.eName}"
+													th:value="${roster.eId}" ></option>
+											</select>
+
+									</td>
+
+									<td class="text-center" style="color: aqua;background-color: blueviolet;padding: 2.5%;"
+										rowspan="2"><b>NIGHT SHIFT</b>
+									</td>
+									<!--<td colspan="2">Larry the Bird</td>-->
+									<td>7:00 PM to 9:00 AM</td>
+									<td>7:00 PM to 9:00 AM</td>
+									<td>7:00 PM to 9:00 AM</td>
+									<td>7:00 PM to 9:00 AM</td>
+									<td>7:00 PM to 9:00 AM</td>
+									<td>7:00 PM to 9:00 AM</td>
+									<td>7:00 PM to 9:00 AM</td>
+								</tr>
+								<tr>
+									<td class="" style="width: 1q;height:1q;"  >
+									
+											<select>
+													<option th:each="roster:${RosterEmpList}" 
+													th:text="${roster.eName}"
+													th:value="${roster.eId}" ></option>
+											</select>
+
+									</td>
+
+									<td>7:00 PM to 9:00 AM</td>
+									<td>7:00 PM to 9:00 AM</td>
+									<td>7:00 PM to 9:00 AM</td>
+									<td>7:00 PM to 9:00 AM</td>
+									<td>7:00 PM to 9:00 AM</td>
+									<td>7:00 PM to 9:00 AM</td>
+									<td>7:00 PM to 9:00 AM</td>
+								</tr>
+								<tr>
+									<td class="" style="width: 1q;height:1q;"  >
+									
+											<select>
+													<option th:each="roster:${RosterEmpList}" 
+													th:text="${roster.eName}"
+													th:value="${roster.eId}" ></option>
+											</select>
+
+									</td>
+
+									<td class="text-center" style="color: aqua;background-color: blueviolet;padding: 3%;"
+										rowspan="2">
+										<b>NOC TEAM</b>
+									</td>
+									<!--<td colspan="2">Larry the Bird</td>-->
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+								</tr>
+								<tr>
+									<td class="" style="width: 1q;height:1q;"  >
+									
+											<select>
+													<option th:each="roster:${RosterEmpList}" 
+													th:text="${roster.eName}"
+													th:value="${roster.eId}" ></option>
+											</select>
+
+									</td>
+
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+								</tr>
+								<tr>
+									<td class="" style="width: 1q;height:1q;"  >
+									
+											<select>
+													<option th:each="roster:${RosterEmpList}" 
+													th:text="${roster.eName}"
+													th:value="${roster.eId}" ></option>
+											</select>
+
+									</td>
+
+									<td class="text-center" style="color: aqua;background-color: blueviolet;padding: 3%;"
+										rowspan="3">
+										<b class="" style="">GENERAL SHIFT</b>
+									</td>
+									<!--<td colspan="2">Larry the Bird</td>-->
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+								</tr>
+								<tr>
+									<td class="" style="width: 1q;height:1q;"  >
+									
+											<select>
+													<option th:each="roster:${RosterEmpList}" 
+													th:text="${roster.eName}"
+													th:value="${roster.eId}" ></option>
+											</select>
+
+									</td>
+
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+								</tr>
+								<tr>
+									<td class="" style="width: 1q;height:1q;"  >
+									
+											<select>
+													<option th:each="roster:${RosterEmpList}" 
+													th:text="${roster.eName}"
+													th:value="${roster.eId}" ></option>
+											</select>
+
+									</td>
+
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+									<td>9:30 AM to 6:00 PM</td>
+								</tr>
+							</tbody>
+
+						</table>
+						<div class="col-md-4-sm" style="border-radius: 15%;">
+							<button class="btn btn-primary btn-lg" type="submit" value="save"
+								style="border-radius: 12em;">Save</button> ||
+							<button class="btn btn-primary btn-lg" type="submit"
+								style="border-radius: 12em;">Edit</button>
+						</div>
+					</form>
+				</center>
+			</div>
+		</div>
+	</div>
+
+
+
+
+</body>
+
+</html>

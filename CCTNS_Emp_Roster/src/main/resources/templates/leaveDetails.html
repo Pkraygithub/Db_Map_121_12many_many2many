@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<title>Leave Details</title>
+</head>
+<div th:replace="navbar" class="container"></div>
+<div class="container" style="background-color: blanchedalmond;">
+	<center>
+
+		<form action="@{cctns/rostersheet}">
+			<div class="hadder-part py-0">
+
+				<h4 class="text-center"
+					style="color: yellow;background-color: green;width: 50%; height: 40q; border-radius:35q">Leave
+					Dashboard</h4>
+
+			</div>
+
+
+			<div class="card py-0" style="background-color: antiquewhite; ">
+
+				<div class="card-body">
+
+
+					<form action="" method="">
+
+						<table class="table-hover" style="background-color: beige;" border="1">
+
+							<tr style="background-color:brown;color: aliceblue; text-align: center;">
+								<th>Employees Id</th>
+								<th>Employees Name</th>
+								<th>Designation</th>
+								<!--below commented by tushar-->
+							<!--	<th colspan="2">Operation</th>-->
+								<!--till here-->
+
+
+
+							<tr th:each="leav:${page}" style="text-align: center;">
+								<td th:text="${leav.eId}"></td>
+								<td th:text="${leav.eName}"></td>
+								<td th:text="${leav.edesignation}"></td>
+
+								<!--below commented by tushar-->
+								<!--	<td><a th:href="@{http://localhost:5487/cctns/leave}" class="btn btn-danger btn-sm"><span
+										style='font-size:15px;'>&#9997;Apply Leave</span></a></td>
+							<td><a th:href="@{http://localhost:5487/cctns/showallleave}"
+									class="btn btn-primary btn-sm"><span style='font-size:15px;'>&#9997;View</span></a>
+							</td>-->
+								<!--till here-->
+
+							</tr>
+
+
+						</table>
+						<span class="">Page No ~</span>
+
+						<th:block th:each="i:${#numbers.sequence(0,page.totalPages-1)}">
+							<a th:href="@{/cctns/leavedetails(page=${i})}">[[${i}+1]]</a>
+						</th:block>
+
+
+					</form>
+
+
+				</div>
+			</div>
+	</center>
+
+
+</div>
+
+</body>
+
+</html>
