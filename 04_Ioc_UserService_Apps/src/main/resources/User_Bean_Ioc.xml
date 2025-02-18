@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	
+
+	<bean id="dao" class="in.sbms.dao.UserDao" />
+	<bean id="pwd" class="in.sbms.pwd.PwdService" />
+	<bean id="email" class="in.sbms.email.EmailService" />
+	
+	<bean id="Userservice" class="in.sbms.service.UserService">
+		<property name="userdao" ref="dao" />
+		<property name="pwdservice" ref="pwd" />
+		<property name="emailservice" ref="email" />
+
+	</bean>
+	<bean id="UserControle" class="in.sbms.controller.UserController">
+	<constructor-arg name="Userservice" ref="Userservice" />
+	</bean>
+
+
+
+
+</beans>
